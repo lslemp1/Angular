@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="intro">
+<head>
+<meta charset="utf-8">
+<title>Account</title>
+</head>
+
+<style type="text/css">
+
+label, input{display: block; margin: 1em}
+input{margin:1em}
+radio{display:inline}
+
+</style>
+
+<body ng-controller="LooseController as LC">
+
+<fieldset>
+<label for = "customer">Customer</label>
+<input id="customer-id" ng-model="LC.account.customer" type="text">
+<input id="balance" ng-model="LC.account.balance" type="number" class="form-control" step="0.01">
+<input name="type" ng-model="LC.account.type" type="radio" value = "CH">Checking
+<input name="type" ng-model="LC.account.type" type="radio" value = "SA">Savings
+</label>
+</fieldset>
+
+<div>
+Customer Id: {{ LC.account.customer }} <br>
+Balance: {{ LC.account.balance }} <br>
+Type: {{ LC.account.type }} 
+</div>
+
+<script src = "js/angular-1.5.3.min.js"></script>
+<script type = "text/javascript">
+	angular.module('intro', []).controller("LooseController", function()
+	{
+		this.account = {
+		id: 85,
+		customer: "billionare@home.org",
+		type: SA,
+		balance:900.00
+		}
+	});
+	
+	</script>
+
+</body>
+</html>

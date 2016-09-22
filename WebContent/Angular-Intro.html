@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+
+<style type="text/css">
+
+label, input{display: block; margin: 1em}
+input{margin:1em
+
+</style>
+
+<body>
+
+<fieldset>
+<label for="user-name">User Name</label>
+<input id="user-name" ng-model="userName" type="text" value="potato">
+<label for="user-name">Password</label>
+<input id="password" ng-model="password" type="password">
+</fieldset>
+
+<div>
+{{ userName }} <br>
+Your password {{ password }} is not secure!
+</div>
+
+<script src = "js/angular-1.5.3.min.js"></script>
+
+</body>
+</html>

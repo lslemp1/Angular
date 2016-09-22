@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="customers">
+<head>
+<meta charset="utf-8">
+<title>Customers</title>
+</head>
+
+<style type="text/css">
+
+label, input{display: block; margin: 1em}
+input{margin:1em}
+radio{display:inline}
+
+</style>
+
+<body ng-controller="CustomerController as CC">
+
+<ul >
+<li data-id = "{{customer.id}}" ng-repeat = "customer in CC.customers"><a ng-click = "CC.delete($index)" href="#">{{ customer.name }}</a></li>
+</ul>
+
+<form id="form" ng-submit="CC.add()">
+	<label for="customer-name">New Customer</label>
+	<input id="customer-name" type="text" ng-model="CC.newName" >
+	<input type="submit" value = "Add New Customer" >
+</form>
+
+<div>
+Count of customers: {{ CC.customers.length }}
+</div>
+
+<div>
+First Customer: {{ CC.customers[0].name }}
+</div>
+
+<div>
+Last Customer: {{ CC.customers[CC.customers.length- 1].name }}
+</div>
+
+
+<script src = "js/angular-1.5.3.min.js"></script>
+<script type = "text/javascript">
+	angular.module('customers', []).controller("CustomerController", function()
+	{
+		this.customers = [
+		     {id: 87, name: "John Doe"}
+		                  
+	    ];
+		this.newName = "";
+		this.add = function()
+		{
+			this.customers.push({id: 789, name: this.newName})
+			this.newName = "";
+		}
+		
+		this.delete = function (index) {
+		    this.customers.splice(index, 1);
+		}
+		
+	
+	});
+		
+		
+		
+		
+/* 		var self = this;
+		setTimeout(function() {
+			console.log("timeout ready");
+			self.customers.push( { id: 100, name: "Jane Doe"})
+			$scope.$apply();
+		}, 1500);
+ */
+	
+	</script>
+
+</body>
+</html>
